@@ -17,14 +17,15 @@ RUN echo -e "https://dl-cdn.alpinelinux.org/alpine/edge/testing\nhttps://dl-cdn.
 	brlaser \
 	hplip \
 	avahi \
+	curl \
 	inotify-tools \
 	python3 \
 	python3-dev \
-	py3-pip \
 	build-base \
 	wget \
 	rsync \
-	&& pip3 --no-cache-dir install --upgrade pip \
+	&& curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+	&& python get-pip.py pip==22.1.1 \
 	&& pip3 install pycups \
 	&& rm -rf /var/cache/apk/*
 

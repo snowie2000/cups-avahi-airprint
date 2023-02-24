@@ -21,6 +21,7 @@ mkdir -p /config/ppd
 mkdir -p /services
 rm -rf /etc/avahi/services/*
 rm -rf /etc/cups/ppd
+rm -rf /run/*
 ln -s /config/ppd /etc/cups
 if [ `ls -l /services/*.service 2>/dev/null | wc -l` -gt 0 ]; then
 	cp -f /services/*.service /etc/avahi/services/

@@ -27,10 +27,12 @@ RUN echo -e "https://dl-cdn.alpinelinux.org/alpine/edge/testing\nhttps://dl-cdn.
 	&& curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
 	&& python get-pip.py pip==22.1.1 \
 	&& pip3 install pycups \
+	&& apk del build-base \
 	&& rm -rf /var/cache/apk/*
 
 # This will use port 631
 EXPOSE 631
+EXPOSE 5353/udp
 
 # We want a mount for these
 VOLUME /config
@@ -39,6 +41,7 @@ VOLUME /filter
 
 # Add scripts
 ADD root /
+ADD extra_drivers/x86_64 /
 RUN chmod +x /root/*
 
 #Run Script

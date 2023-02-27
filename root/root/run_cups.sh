@@ -37,4 +37,5 @@ fi
 
 /usr/sbin/avahi-daemon --daemonize
 /root/printer-update.sh &
+/root/external-driver.sh &
 exec /usr/sbin/cupsd -f
